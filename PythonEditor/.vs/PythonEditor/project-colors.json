@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "4a4e2cab-6c0b-4a0c-99fd-ee1ece1a0be6": {
+      "ProjectGuid": "4a4e2cab-6c0b-4a0c-99fd-ee1ece1a0be6",
+      "DisplayName": "PythonEditor",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
