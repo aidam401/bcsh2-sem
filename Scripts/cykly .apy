@@ -1,0 +1,19 @@
+print("1. cyklus ")
+for i in range(10):
+	print("    " + str(i))
+print("")
+print("2. cyklus ")
+for i in range(5, 10):
+	print("    " + str(i))
+
+print("")
+print("3. cyklus ")
+for i in range(1, 10, 2):
+	print("    " + str(i))
+
+print("")
+print("4. cyklus ")
+counter:int = 0
+while counter != 10:
+	print("    " + str(counter))
+	counter = counter + 1

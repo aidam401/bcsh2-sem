@@ -1,0 +1,10 @@
+print("Zadejte 1. cislo")
+cislo1: double = double(input())
+print("Zadejte 2. cislo")
+cislo2: double = double(input())
+
+print("cislo1 + cislo2 = " + str(cislo1 + cislo2))
+print("cislo1 - cislo2 = " + str(cislo1 - cislo2))
+print("cislo1 * cislo2 = " + str(cislo1 * cislo2))
+print("cislo1 / cislo2 = " + str(cislo1 / cislo2))
+print("int(cislo1) ** int(cislo2) = " + str(int(cislo1) ** int(cislo2)))

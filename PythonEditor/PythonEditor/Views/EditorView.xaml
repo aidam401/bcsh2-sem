@@ -4,33 +4,104 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PythonEditor.Views"
+             
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="800" d:DesignWidth="800">
+
 
     <Grid>
-        <DockPanel LastChildFill="False">
-            <Grid DockPanel.Dock="Top" Height="39" Background="#FF2B2B2B">
-                <ComboBox HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120"/>
-                <Button Content="Open" HorizontalAlignment="Left" Margin="135,10,0,0" VerticalAlignment="Top" Height="22" Width="60"/>
-                <Button Content="Run" HorizontalAlignment="Left" Margin="711,10,0,0" VerticalAlignment="Top"/>
-                <Button Content="Compile
-                        " HorizontalAlignment="Left" Margin="741,10,0,0" VerticalAlignment="Top" Width="49"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row ="0" Grid.ColumnSpan="2" Background="#3a3f41">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="50" />
+            </Grid.ColumnDefinitions>
+
+
+            <Button Grid.Column="0" Command="{Binding OpenCommand}">Open</Button>
+            <Button Grid.Column="1" Command="{Binding SaveAsCommand}">Save as</Button>
+            <Button Grid.Column="4" Command="{Binding RunCommand}">Run</Button>
+
+        </Grid>
+
+
+
+        <ScrollViewer 
+            Grid.Row="1" 
+            Grid.Column="0" 
+            Grid.ColumnSpan="2" 
+            ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+            ScrollViewer.VerticalScrollBarVisibility="Auto"
+            Background="#4c4c4c">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <!--Code-->
+                <TextBox Grid.Column ="1" 
+                         Width="auto" 
+                         TextWrapping="Wrap" 
+                         AcceptsReturn="True" 
+                         AcceptsTab="True" 
+                         VerticalScrollBarVisibility="Auto" 
+                         Background="#2b2b2b"
+                         Text="{Binding CodeText, UpdateSourceTrigger=PropertyChanged}" FontSize="20" FontFamily="Segoe UI" Foreground="White" />
+                <!--Lines-->
+                <TextBlock  
+                    Grid.Column ="0" 
+                    Background="#333438"
+                    FontSize="20"
+                    FontFamily="Segoe UI"
+                    TextAlignment="Right" 
+                    Text="{Binding LineText}" Foreground="#FF909090" Padding="0,0,10,0"/>
             </Grid>
-            <RichTextBox Width="100" Background="#FF303335">
-                <FlowDocument>
-                    <Paragraph>
-                        <Run Text="RichTextBox"/>
-                    </Paragraph>
-                </FlowDocument>
-            </RichTextBox>
-            <TextBlock TextWrapping="Wrap" Text="TextBlock" Width="0"/>
-            <RichTextBox DockPanel.Dock="Left" Background="#FF2B2B2B">
-                <FlowDocument>
-                    <Paragraph>
-                        <Run Text="RichTextBox"/>
-                    </Paragraph>
-                </FlowDocument>
-            </RichTextBox>
-        </DockPanel>
+        </ScrollViewer>
+
+        <ScrollViewer Grid.Row="3" Grid.Column="1" VerticalScrollBarVisibility="Auto" >
+            <!--Console-->
+            <TextBlock  Width="auto" Background="#2b2b2b" 
+                   FontSize="20"
+                   Foreground="White"
+                   FontFamily="Segoe UI" Text="{Binding ConsoleText}"/>
+        </ScrollViewer>
+        <Grid Grid.Row="4" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="50" />
+            </Grid.ColumnDefinitions>
+            <!--Input-->
+            <TextBox Width="Auto" 
+                     Background="#3b3f41" 
+                     FontSize="20"
+                     Foreground="White"
+                     FontFamily="Segoe UI"
+                    Text="{Binding InputText}"/>
+
+            <Button Grid.Column="4" Command="{Binding InputCommand}">Send</Button>
+
+        </Grid>
+
+
+        <GridSplitter Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Background="Black"/>
+
+
     </Grid>
+
+
+
+
 </UserControl>
